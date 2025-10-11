@@ -21,8 +21,8 @@ function ProductsPage() {
     last_page: 1,
     per_page: 10,
     total: 0,
-    from: 0,
-    to: 0
+    from: 1,
+    to: 10
   });
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
@@ -99,8 +99,8 @@ function ProductsPage() {
           last_page: 1,
           per_page: filters.per_page || 10,
           total: response.data?.length ?? 0,
-          from: 0,
-          to: 0
+          from: 1,
+          to: response.data?.length ?? 0
         }
       );
     } catch (error) {
@@ -155,9 +155,9 @@ function ProductsPage() {
           price: product.price,
           category_id: product.category_id,
           subcategory_id: product.subcategory_id,
-          images: product.images,
+          images: Array.isArray(product.images) ? product.images : undefined,
           stock: product.stock,
-          status: product.status,
+          status: Array.isArray(product.status) ? product.status : undefined,
           is_active: status === 'active'
         });
         await loadProducts();
@@ -185,7 +185,7 @@ function ProductsPage() {
     setFilters(prev => ({ ...prev, search, page: 1 }));
   };
 
-  const handleStatusFilterChange = (status: string) => {
+  const handleStatusFilterChange = (status: '' | 'active' | 'inactive') => {
     setFilters(prev => ({ ...prev, status, page: 1 }));
   };
 
@@ -243,7 +243,7 @@ function ProductsPage() {
               <div>
                 <select
                   value={filters.status || ''}
-                  onChange={(e) => handleStatusFilterChange(e.target.value)}
+                  onChange={(e) => handleStatusFilterChange(e.target.value as '' | 'active' | 'inactive')}
                   className="flex h-9 w-full items-center justify-between rounded-md border border-input  px-3 py-1 text-sm shadow-sm focus:outline-none focus:ring-1 focus:ring-ring"
                 >
                   <option value="">Tous les statuts</option>

@@ -112,8 +112,9 @@ class ProductsService {
     // Normaliser les images pour chaque produit
     if (result.data && Array.isArray(result.data)) {
       result.data.forEach((product: PublicProduct) => {
-        if (typeof product.images === 'string') {
-          product.images = product.images.trim() === '' ? [] : [product.images];
+        const images = product.images as string | string[];
+        if (typeof images === 'string') {
+          product.images = images.trim() === '' ? [] : [images];
         }
       });
     }
@@ -138,8 +139,11 @@ class ProductsService {
     const result = await response.json();
 
     // Normaliser les images
-    if (result.data && typeof result.data.images === 'string') {
-      result.data.images = result.data.images.trim() === '' ? [] : [result.data.images];
+    if (result.data) {
+      const images = result.data.images as string | string[];
+      if (typeof images === 'string') {
+        result.data.images = images.trim() === '' ? [] : [images];
+      }
     }
 
     return result;

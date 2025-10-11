@@ -7,20 +7,11 @@ import AdminLayout from "@/components/admin/admin-layout";
 import CategoryTable from "@/components/admin/category-table";
 import CategoryForm from "@/components/admin/category-form";
 import Pagination from "@/components/admin/pagination";
-import { adminService, Category, CategoryData } from '@/lib/admin-service';
+import { adminService, Category, CategoryData, PaginationMeta } from '@/lib/admin-service';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Plus, Search } from "lucide-react";
 import { Modal } from '@/components/ui/modal';
-
-interface PaginationMeta {
-  current_page: number;
-  last_page: number;
-  per_page: number;
-  total: number;
-  from?: number;
-  to?: number;
-}
 
 function CategoriesPage() {
   const [categories, setCategories] = useState<Category[]>([]);
@@ -29,8 +20,8 @@ function CategoriesPage() {
     last_page: 1,
     per_page: 10,
     total: 0,
-    from: 0,
-    to: 0
+    from: 1,
+    to: 10
   });
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);

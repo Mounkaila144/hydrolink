@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Read(//c/Users/Mounkaila/PhpstormProjects/csf/commande-frontend/**)"
+      "Read(//c/Users/Mounkaila/PhpstormProjects/csf/commande-frontend/**)",
+      "Bash(npm run build)"
     ],
     "deny": [],
     "ask": []

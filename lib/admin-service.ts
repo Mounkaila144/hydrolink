@@ -8,6 +8,17 @@ import {
   PaginationMeta
 } from './validations';
 
+// Re-export types with common aliases for convenience
+export type Category = AdminCategory;
+export type CategoryData = CategoryFormData;
+export type Subcategory = AdminSubcategory;
+export type SubcategoryData = SubcategoryFormData;
+export type Product = AdminProduct;
+export type ProductData = ProductFormData;
+
+// Also export the admin-prefixed versions
+export type { AdminProduct, AdminCategory, AdminSubcategory, ProductFormData, CategoryFormData, SubcategoryFormData, PaginationMeta };
+
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api';
 const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:8000';
 
@@ -315,24 +326,6 @@ class AdminService {
     });
 
     return this.handleResponse<ApiResponse<Order>>(response);
-  }
-
-  // ==================== UPLOAD ====================
-
-  async uploadImage(file: File): Promise<ApiResponse<{ url: string }>> {
-    const formData = new FormData();
-    formData.append('image', file);
-
-    const token = this.getToken();
-    const response = await fetch(`${API_BASE_URL}/upload/image`, {
-      method: 'POST',
-      headers: {
-        ...(token && { 'Authorization': `Bearer ${token}` }),
-      },
-      body: formData,
-    });
-
-    return this.handleResponse<ApiResponse<{ url: string }>>(response);
   }
 
   // ==================== STATS ====================

@@ -24,16 +24,38 @@ interface ProductFormProps {
 }
 
 export function ProductForm({ product, categories: categoriesProp, onSubmit, onCancel }: ProductFormProps) {
+  // Normalize images to always be an array
+  const normalizeImages = (images: string | string[] | undefined): string[] => {
+    if (!images) return [];
+    if (Array.isArray(images)) return images;
+    if (typeof images === 'string') return images.trim() === '' ? [] : [images];
+    return [];
+  };
+
+  // Normalize status to always be an array
+  const normalizeStatus = (status: string | ProductStatus | ProductStatus[] | undefined): ProductStatus[] => {
+    if (!status) return [];
+    if (Array.isArray(status)) return status;
+    if (typeof status === 'string') {
+      try {
+        return JSON.parse(status) as ProductStatus[];
+      } catch {
+        return [];
+      }
+    }
+    return [];
+  };
+
   const [formData, setFormData] = useState<ProductFormData>({
     name: product?.name || "",
     description: product?.description || "",
     price: product?.price || 0,
     category_id: product?.category_id || 0,
     subcategory_id: product?.subcategory_id || undefined,
-    images: product?.images || [],
+    images: normalizeImages(product?.images),
     is_active: product?.is_active !== undefined ? product.is_active : true,
     stock: product?.stock || 0,
-    status: product?.status || [],
+    status: normalizeStatus(product?.status),
   });
 
   const [categories, setCategories] = useState<AdminCategory[]>([]);
