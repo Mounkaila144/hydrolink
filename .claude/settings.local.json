@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/Mounkaila/PhpstormProjects/csf/commande-frontend/**)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

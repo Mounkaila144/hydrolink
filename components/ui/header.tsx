@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { Menu, X, Phone, Mail, ChevronDown } from "lucide-react";
+import { Menu, X, Phone, Mail, ChevronDown, User, LogOut } from "lucide-react";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -14,14 +14,28 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { useAuth } from "@/lib/auth-context";
+import { LoginModal } from "@/components/auth/login-modal";
+import { RegisterModal } from "@/components/auth/register-modal";
 import siteData from "@/content/site.fr.json";
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
   const pathname = usePathname();
   const t = useTranslations();
+  const { user, isAuthenticated, logout } = useAuth();
 
   const navigation = siteData.nav as Array<{
     label: string;
@@ -136,8 +150,47 @@ export function Header() {
             </NavigationMenuList>
           </NavigationMenu>
 
-          {/* CTA Button - Desktop */}
+          {/* Auth & CTA Buttons - Desktop */}
           <div className="hidden lg:flex items-center space-x-3">
+            {isAuthenticated ? (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" className="flex items-center space-x-2">
+                    <User className="h-5 w-5" />
+                    <span>{user?.name}</span>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-56">
+                  <DropdownMenuLabel>{t('auth.profile.title')}</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem>
+                    <User className="mr-2 h-4 w-4" />
+                    <span>{t('auth.profile.account')}</span>
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem onClick={logout} className="text-red-600">
+                    <LogOut className="mr-2 h-4 w-4" />
+                    <span>{t('auth.profile.logout')}</span>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
+              <>
+                <Button
+                  variant="ghost"
+                  onClick={() => setIsLoginModalOpen(true)}
+                  className="hover:bg-primary-50"
+                >
+                  {t('auth.login.signIn')}
+                </Button>
+                <Button
+                  onClick={() => setIsRegisterModalOpen(true)}
+                  className="btn-accent"
+                >
+                  {t('auth.register.createAccount')}
+                </Button>
+              </>
+            )}
             <Button asChild className="btn-primary shadow-md hover:shadow-lg transition-all duration-300">
               <Link href="/contact">
                 {t("homepage.hero.ctaPrimary")}
@@ -207,6 +260,52 @@ export function Header() {
                 </div>
               ))}
 
+              {/* Auth Section - Mobile */}
+              <div className="pt-4 mt-4 border-t border-neutral-200 space-y-3">
+                {isAuthenticated ? (
+                  <>
+                    <div className="px-4 py-3 bg-primary-50 rounded-lg">
+                      <div className="flex items-center space-x-3">
+                        <User className="h-5 w-5 text-primary-600" />
+                        <div>
+                          <p className="text-sm font-medium text-foreground">{user?.name}</p>
+                          <p className="text-xs text-muted-foreground">{user?.email}</p>
+                        </div>
+                      </div>
+                    </div>
+                    <button
+                      onClick={logout}
+                      className="w-full flex items-center justify-center space-x-2 px-4 py-3 text-sm font-medium text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                    >
+                      <LogOut className="h-4 w-4" />
+                      <span>{t('auth.profile.logout')}</span>
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <Button
+                      onClick={() => {
+                        setIsMobileMenuOpen(false);
+                        setIsLoginModalOpen(true);
+                      }}
+                      variant="outline"
+                      className="w-full"
+                    >
+                      {t('auth.login.signIn')}
+                    </Button>
+                    <Button
+                      onClick={() => {
+                        setIsMobileMenuOpen(false);
+                        setIsRegisterModalOpen(true);
+                      }}
+                      className="w-full btn-accent"
+                    >
+                      {t('auth.register.createAccount')}
+                    </Button>
+                  </>
+                )}
+              </div>
+
               {/* Contact Info Section */}
               <div className="pt-4 mt-4 border-t border-neutral-200 space-y-3">
                 <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wide px-4">
@@ -238,6 +337,24 @@ export function Header() {
           </div>
         )}
       </div>
+
+      {/* Auth Modals */}
+      <LoginModal
+        isOpen={isLoginModalOpen}
+        onClose={() => setIsLoginModalOpen(false)}
+        onSwitchToRegister={() => {
+          setIsLoginModalOpen(false);
+          setIsRegisterModalOpen(true);
+        }}
+      />
+      <RegisterModal
+        isOpen={isRegisterModalOpen}
+        onClose={() => setIsRegisterModalOpen(false)}
+        onSwitchToLogin={() => {
+          setIsRegisterModalOpen(false);
+          setIsLoginModalOpen(true);
+        }}
+      />
     </header>
   );
 }

@@ -147,5 +147,47 @@
       "mentions": "Legal notices",
       "privacy": "Privacy policy"
     }
+  },
+  "auth": {
+    "login": {
+      "title": "Sign In",
+      "subtitle": "Sign in to your account to continue",
+      "email": "Email address",
+      "emailPlaceholder": "your@email.com",
+      "password": "Password",
+      "passwordPlaceholder": "Your password",
+      "rememberMe": "Remember me",
+      "forgotPassword": "Forgot password?",
+      "signIn": "Sign in",
+      "signingIn": "Signing in...",
+      "noAccount": "Don't have an account?",
+      "createAccount": "Create account"
+    },
+    "register": {
+      "title": "Create Account",
+      "subtitle": "Join HYDROLINK-BTP today",
+      "name": "Full name",
+      "namePlaceholder": "Your full name",
+      "email": "Email address",
+      "emailPlaceholder": "your@email.com",
+      "password": "Password",
+      "passwordPlaceholder": "Create a secure password",
+      "confirmPassword": "Confirm password",
+      "confirmPasswordPlaceholder": "Confirm your password",
+      "acceptTerms": "I accept the",
+      "terms": "terms of use",
+      "and": "and",
+      "privacy": "privacy policy",
+      "createAccount": "Create my account",
+      "creating": "Creating...",
+      "haveAccount": "Already have an account?",
+      "signIn": "Sign in"
+    },
+    "profile": {
+      "title": "My Profile",
+      "logout": "Sign out",
+      "account": "My Account",
+      "settings": "Settings"
+    }
   }
 }
