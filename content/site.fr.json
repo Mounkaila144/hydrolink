@@ -1,0 +1,151 @@
+{
+  "brand": {
+    "name": "HYDROLINK-BTP",
+    "location": "Niamey, Niger",
+    "phones": ["+227 91 27 09 51", "+227 88 59 59 20"],
+    "email": "hydrolinkbtp@gmail.com"
+  },
+  "nav": [
+    {"label": "Accueil", "href": "/"},
+    {"label": "À propos", "href": "/a-propos"},
+    {"label": "Services", "children": [
+      {"label": "Génie civil & BTP", "href": "/services/btp"},
+      {"label": "Hydraulique", "href": "/services/hydraulique"},
+      {"label": "E-commerce", "href": "/services/e-commerce"},
+      {"label": "Commerce général", "href": "/services/commerce-general"}
+    ]},
+    {"label": "Impact", "href": "/impact"},
+    {"label": "Objectifs", "href": "/objectifs"},
+    {"label": "Pourquoi nous choisir", "href": "/pourquoi-nous-choisir"},
+    {"label": "Contact", "href": "/contact"}
+  ],
+  "homepage": {
+    "hero": {
+      "title": "Solutions durables en BTP, hydraulique, e-commerce & commerce général",
+      "subtitle": "Des solutions de qualité pour le développement du Niger",
+      "ctaPrimary": "Demander un devis",
+      "ctaSecondary": "Nous contacter"
+    },
+    "pillars": [
+      "Génie civil & BTP",
+      "Hydraulique",
+      "E-commerce",
+      "Commerce général"
+    ]
+  },
+  "services": {
+    "btp": {
+      "title": "Génie civil & BTP",
+      "description": "Exécution de projets d'infrastructure de haute qualité pour le développement urbain et rural.",
+      "services": [
+        "Logements résidentiels",
+        "Établissements scolaires et bâtiments publics",
+        "Routes et infrastructures de transport",
+        "Dallages et ouvrages spéciaux"
+      ]
+    },
+    "hydraulique": {
+      "title": "Hydraulique",
+      "description": "Amélioration de l'accès à l'eau potable en milieu rural.",
+      "services": [
+        "Forages (profonds)",
+        "Puits (traditionnels/modernes)",
+        "Systèmes d'AEP",
+        "Mini-adductions"
+      ]
+    },
+    "ecommerce": {
+      "title": "E-commerce",
+      "description": "Importation, exportation et vente en ligne avec livraison nationale.",
+      "services": [
+        "Importation (qualité, fournisseurs fiables)",
+        "Exportation (valorisation ressources locales)",
+        "Vente en ligne (livraison nationale)"
+      ]
+    },
+    "commerce_general": {
+      "title": "Commerce général",
+      "description": "Importation et exportation avec avantage logistique local.",
+      "services": [
+        "Importation de produits de qualité",
+        "Exportation de ressources locales",
+        "Commerce de gros et détail"
+      ]
+    }
+  },
+  "values": ["Excellence", "Innovation", "Développement durable"],
+  "objectifs": [
+    "Excellence opérationnelle",
+    "Accès à l'eau",
+    "Commerce innovant",
+    "Impact social"
+  ],
+  "about": {
+    "title": "Qui sommes-nous",
+    "description": "Entreprise dynamique basée à Niamey, spécialisée en BTP, génie civil, hydraulique, e-commerce et commerce général. Nous proposons des solutions durables et de qualité, adaptées au contexte nigérien.",
+    "mission": "Notre mission : améliorer l'accès à l'eau potable en milieux ruraux."
+  },
+  "impact": {
+    "title": "Impact social & économique",
+    "description": "Contribution au développement du Niger à travers :",
+    "points": [
+      "Création d'emplois locaux",
+      "Formation de jeunes talents",
+      "Soutien aux communautés locales",
+      "Développement d'infrastructures essentielles",
+      "Contribution à l'économie nationale"
+    ]
+  },
+  "why_us": {
+    "title": "Pourquoi nous choisir ?",
+    "reasons": [
+      {
+        "title": "Expertise multidisciplinaire",
+        "description": "Maîtrise de plusieurs domaines complémentaires"
+      },
+      {
+        "title": "Qualité garantie",
+        "description": "Respect des normes et standards internationaux"
+      },
+      {
+        "title": "Ancrage local",
+        "description": "Parfaite connaissance du contexte nigérien"
+      },
+      {
+        "title": "Innovation constante",
+        "description": "Recherche de solutions modernes et efficaces"
+      }
+    ]
+  },
+  "contact": {
+    "title": "Contactez-nous",
+    "form": {
+      "fullname": "Nom complet",
+      "email": "Email",
+      "phone": "Téléphone",
+      "subject": "Sujet",
+      "message": "Message",
+      "submit": "Envoyer"
+    },
+    "quote_form": {
+      "title": "Demander un devis",
+      "fullname": "Nom complet",
+      "email": "Email",
+      "phone": "Téléphone",
+      "service": "Type de service",
+      "budget": "Budget approximatif",
+      "city": "Localisation",
+      "deadline": "Délai souhaité",
+      "attachment": "Fichier joint",
+      "submit": "Demander un devis"
+    }
+  },
+  "footer": {
+    "company": "HYDROLINK-BTP",
+    "address": "Niamey, Niger",
+    "legal": {
+      "mentions": "Mentions légales",
+      "privacy": "Politique de confidentialité"
+    }
+  }
+}
