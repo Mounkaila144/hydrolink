@@ -8,6 +8,7 @@
   "nav": [
     {"label": "Accueil", "href": "/"},
     {"label": "À propos", "href": "/a-propos"},
+    {"label": "Produits", "href": "/produits"},
     {"label": "Services", "children": [
       {"label": "Génie civil & BTP", "href": "/services/btp"},
       {"label": "Hydraulique", "href": "/services/hydraulique"},
