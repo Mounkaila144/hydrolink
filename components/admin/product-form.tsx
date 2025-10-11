@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
 import { AdminProduct, AdminCategory, AdminSubcategory, ProductFormData, ProductStatus } from "@/lib/validations";
 import { adminService, getFullImageUrl } from "@/lib/admin-service";
 import { PRODUCT_STATUSES } from "@/lib/constants/productStatus";
@@ -66,7 +65,7 @@ export function ProductForm({ product, categories: categoriesProp, onSubmit, onC
 
   // Set initial image preview if editing
   useEffect(() => {
-    if (product?.images && product.images.length > 0) {
+    if (product?.images && product.images.length > 0 && product.images[0]) {
       setImagePreview(getFullImageUrl(product.images[0]));
     }
   }, [product]);
@@ -143,12 +142,16 @@ export function ProductForm({ product, categories: categoriesProp, onSubmit, onC
 
     try {
       let imageUrl = formData.images?.[0];
+      console.log('[ProductForm] Current imageUrl from formData:', imageUrl);
 
       // Upload image if a new one was selected
       if (imageFile) {
+        console.log('[ProductForm] Uploading new image file:', imageFile.name);
         setIsUploading(true);
         const uploadResponse = await adminService.uploadImage(imageFile);
+        console.log('[ProductForm] Upload response:', uploadResponse);
         imageUrl = uploadResponse.data.url;
+        console.log('[ProductForm] New imageUrl after upload:', imageUrl);
         setIsUploading(false);
       }
 
@@ -157,9 +160,12 @@ export function ProductForm({ product, categories: categoriesProp, onSubmit, onC
         images: imageUrl ? [imageUrl] : [],
       };
 
+      console.log('[ProductForm] Final submit data:', submitData);
+      console.log('[ProductForm] Images in submit data:', submitData.images);
+
       await onSubmit(submitData);
     } catch (error) {
-      console.error("Erreur lors de la soumission:", error);
+      console.error("[ProductForm] Erreur lors de la soumission:", error);
       setErrors({ submit: "Une erreur est survenue lors de la soumission" });
     } finally {
       setIsSubmitting(false);
@@ -257,7 +263,7 @@ export function ProductForm({ product, categories: categoriesProp, onSubmit, onC
             <SelectTrigger className={errors.category_id ? "border-red-500" : ""}>
               <SelectValue placeholder="Selectionner une categorie" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className={'bg-white'}>
               {categories.map((category) => (
                 <SelectItem key={category.id} value={category.id.toString()}>
                   {category.name}
@@ -344,12 +350,11 @@ export function ProductForm({ product, categories: categoriesProp, onSubmit, onC
             className="mt-1"
           />
           {imagePreview && (
-            <div className="mt-4 relative w-32 h-32 rounded-md overflow-hidden border">
-              <Image
+            <div className="mt-2">
+              <img
                 src={imagePreview}
-                alt="Preview"
-                fill
-                className="object-cover"
+                alt="Apercu"
+                className="w-32 h-32 object-cover rounded-md border"
               />
             </div>
           )}

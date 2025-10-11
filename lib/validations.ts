@@ -59,10 +59,10 @@ export interface AdminProduct {
   price: number;
   category_id: number;
   subcategory_id?: number;
-  images?: string[];
+  images?: string[] | string; // Laravel peut renvoyer une chaîne JSON
   is_active: boolean;
   stock: number;
-  status?: ProductStatus[];
+  status?: ProductStatus[] | string; // Laravel peut renvoyer une chaîne JSON
   is_featured?: boolean;
   original_price?: number;
   created_at: string;

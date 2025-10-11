@@ -11,18 +11,24 @@ import {
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api';
 const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:8000';
 
+// Log des variables d'environnement au chargement
+console.log('[admin-service] Environment variables:');
+console.log('[admin-service] NEXT_PUBLIC_API_URL:', process.env.NEXT_PUBLIC_API_URL);
+console.log('[admin-service] NEXT_PUBLIC_BACKEND_URL:', process.env.NEXT_PUBLIC_BACKEND_URL);
+console.log('[admin-service] API_BASE_URL:', API_BASE_URL);
+console.log('[admin-service] BACKEND_URL:', BACKEND_URL);
+
 // Fonction helper pour construire les URLs complètes des images
 export const getFullImageUrl = (imagePath: string): string => {
   if (!imagePath || imagePath.trim() === '') {
-    // Retourner une image placeholder si le chemin est vide
-    return '/placeholder-product.png';
+    return ''; // Retourner une chaîne vide si pas d'image
   }
-  if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) {
+
+  if (imagePath.startsWith('http')) {
     return imagePath; // Déjà une URL complète
   }
-  // S'assurer que le chemin commence par '/'
-  const normalizedPath = imagePath.startsWith('/') ? imagePath : `/${imagePath}`;
-  return `${BACKEND_URL}${normalizedPath}`;
+
+  return `${BACKEND_URL}${imagePath}`;
 };
 
 // Types pour les réponses API

@@ -5,7 +5,22 @@ const withNextIntl = createNextIntlPlugin("./lib/i18n.ts");
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ['images.unsplash.com', 'localhost'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '8000',
+      },
+      {
+        protocol: 'http',
+        hostname: '127.0.0.1',
+        port: '8000',
+      },
+    ],
     formats: ['image/webp', 'image/avif'],
   },
   experimental: {

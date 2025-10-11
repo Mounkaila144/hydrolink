@@ -7,7 +7,7 @@ import ProductTable from "@/components/admin/product-table";
 import ProductForm from "@/components/admin/product-form";
 import Pagination from "@/components/admin/pagination";
 import { adminService } from "@/lib/admin-service";
-import { AdminProduct, ProductFormData, AdminCategory, PaginationMeta, AdminFilters } from "@/lib/validations";
+import { AdminProduct, ProductFormData, AdminCategory, PaginationMeta, AdminFilters, ProductStatus } from "@/lib/validations";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -64,8 +64,34 @@ function ProductsPage() {
           category_id: filters.category_id
         }
       );
+
       // Normalise la réponse pour garantir un tableau
-      setProducts(Array.isArray(response.data) ? response.data : (response.data ? [response.data as unknown as AdminProduct] : []));
+      const productsData = Array.isArray(response.data) ? response.data : (response.data ? [response.data as unknown as AdminProduct] : []);
+
+      // Normaliser les images et status pour chaque produit
+      productsData.forEach((product) => {
+        // Si images est une chaîne, la convertir en tableau
+        if (typeof product.images === 'string') {
+          if (product.images.trim() === '') {
+            product.images = [];
+          } else {
+            // C'est une chaîne simple, pas du JSON, donc on la met dans un tableau
+            product.images = [product.images];
+          }
+        }
+
+        // Si status est une chaîne JSON, parser
+        if (typeof product.status === 'string') {
+          try {
+            product.status = JSON.parse(product.status) as ProductStatus[];
+          } catch (e) {
+            product.status = [];
+          }
+        }
+      });
+
+      setProducts(productsData);
+
       // Assure que meta est toujours défini pour éviter les erreurs d'accès
       setMeta(
         response.meta ?? {
@@ -78,7 +104,7 @@ function ProductsPage() {
         }
       );
     } catch (error) {
-      console.error('Erreur lors du chargement des produits:', error);
+      console.error('[loadProducts] Erreur lors du chargement des produits:', error);
     } finally {
       setLoading(false);
     }
@@ -124,7 +150,14 @@ function ProductsPage() {
       const product = products.find(p => p.id === id);
       if (product) {
         await adminService.updateProduct(id, {
-          ...product,
+          name: product.name,
+          description: product.description,
+          price: product.price,
+          category_id: product.category_id,
+          subcategory_id: product.subcategory_id,
+          images: product.images,
+          stock: product.stock,
+          status: product.status,
           is_active: status === 'active'
         });
         await loadProducts();
@@ -211,7 +244,7 @@ function ProductsPage() {
                 <select
                   value={filters.status || ''}
                   onChange={(e) => handleStatusFilterChange(e.target.value)}
-                  className="flex h-9 w-full items-center justify-between rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm focus:outline-none focus:ring-1 focus:ring-ring"
+                  className="flex h-9 w-full items-center justify-between rounded-md border border-input  px-3 py-1 text-sm shadow-sm focus:outline-none focus:ring-1 focus:ring-ring"
                 >
                   <option value="">Tous les statuts</option>
                   <option value="active">Actif</option>
@@ -222,7 +255,7 @@ function ProductsPage() {
                 <select
                   value={filters.category_id || ''}
                   onChange={(e) => handleCategoryFilterChange(e.target.value)}
-                  className="flex h-9 w-full items-center justify-between rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm focus:outline-none focus:ring-1 focus:ring-ring"
+                  className=""
                 >
                   <option value="">Toutes les catégories</option>
                   {categories.map((category) => (
