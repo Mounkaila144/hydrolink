@@ -157,8 +157,8 @@ export default function ContactPage() {
                         <div>
                           <h3 className="font-semibold text-foreground mb-1">Email</h3>
                           <p className="text-muted-foreground">
-                            <a href="mailto:hyperlinkbtp@gmail.com" className="hover:text-accent-600 transition-colors">
-                              hyperlinkbtp@gmail.com
+                            <a href="mailto:hydrolinkbtp@gmail.com" className="hover:text-accent-600 transition-colors">
+                              hydrolinkbtp@gmail.com
                             </a>
                           </p>
                         </div>

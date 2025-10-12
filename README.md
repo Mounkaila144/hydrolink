@@ -1,6 +1,6 @@
-# hyperlink-BTP Website
+# hydrolink-BTP Website
 
-Site web professionnel pour hyperlink-BTP, entreprise multidisciplinaire basée à Niamey, Niger, spécialisée en génie civil & BTP, hydraulique, e-commerce et commerce général.
+Site web professionnel pour hydrolink-BTP, entreprise multidisciplinaire basée à Niamey, Niger, spécialisée en génie civil & BTP, hydraulique, e-commerce et commerce général.
 
 ## 🚀 Fonctionnalités
 
@@ -35,7 +35,7 @@ Site web professionnel pour hyperlink-BTP, entreprise multidisciplinaire basée 
 ```bash
 # Cloner le repository
 git clone [repository-url]
-cd hyperlink-btp
+cd hydrolink-btp
 
 # Installer les dépendances
 npm install
@@ -79,7 +79,7 @@ npm run e2e:ui       # Lance les tests E2E avec interface graphique
 ## 📁 Structure du projet
 
 ```
-hyperlink-btp/
+hydrolink-btp/
 ├── app/                    # Pages Next.js (App Router)
 │   ├── a-propos/          # Page À propos
 │   ├── contact/           # Page contact avec formulaires
@@ -141,10 +141,10 @@ Le contenu est géré via des fichiers JSON de traduction :
 ```json
 {
   "brand": {
-    "name": "hyperlink-BTP",
+    "name": "hydrolink-BTP",
     "location": "Niamey, Niger",
     "phones": ["+227 91 27 09 51", "+227 88 59 59 20"],
-    "email": "hyperlinkbtp@gmail.com"
+    "email": "hydrolinkbtp@gmail.com"
   },
   "nav": [...],
   "homepage": {...},
@@ -241,14 +241,14 @@ Le site supporte actuellement le français et peut être facilement étendu à d
 
 Pour toute question ou support :
 
-- **Email** : hyperlinkbtp@gmail.com
+- **Email** : hydrolinkbtp@gmail.com
 - **Téléphone** : +227 91 27 09 51 / +227 88 59 59 20
 - **Adresse** : Niamey, Niger
 
 ## 📄 Licence
 
-Ce projet est développé pour hyperlink-BTP. Tous droits réservés.
+Ce projet est développé pour hydrolink-BTP. Tous droits réservés.
 
 ---
 
-**hyperlink-BTP** - Des solutions durables et de qualité, adaptées au Niger.
+**hydrolink-BTP** - Des solutions durables et de qualité, adaptées au Niger.

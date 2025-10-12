@@ -30,7 +30,7 @@ export default function Home() {
               {/* Left Content */}
               <div className="text-center lg:text-left animate-slide-in-left order-2 lg:order-1">
                 <Badge className="mb-3 sm:mb-4 bg-primary-100 text-primary-800 hover:bg-primary-200 animate-fade-in text-xs sm:text-sm px-3 py-1">
-                  hyperlink-BTP
+                  hydrolink-BTP
                 </Badge>
                 <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 sm:mb-6 leading-tight animate-fade-in-up px-2 sm:px-0">
                   {t("homepage.hero.title")}
@@ -71,7 +71,7 @@ export default function Home() {
                   <div className="relative rounded-xl sm:rounded-2xl overflow-hidden">
                     <Image
                       src="/heroes.png"
-                      alt="hyperlink-BTP - Équipe professionnelle"
+                      alt="hydrolink-BTP - Équipe professionnelle"
                       width={600}
                       height={500}
                       priority
@@ -148,7 +148,7 @@ export default function Home() {
                       <span className="text-white font-bold text-lg sm:text-xl">HL</span>
                     </div>
                     <h4 className="text-lg sm:text-xl font-semibold text-foreground mb-2">
-                      hyperlink-BTP
+                      hydrolink-BTP
                     </h4>
                     <p className="text-sm sm:text-base text-muted-foreground px-2 sm:px-0">
                       Entreprise multidisciplinaire basée à Niamey, Niger
@@ -277,7 +277,7 @@ export default function Home() {
                 <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-white/20 hover:bg-white/20 transition-all duration-300">
                   <Mail className="h-7 w-7 sm:h-8 sm:w-8 mx-auto mb-2 sm:mb-3 text-accent-300" />
                   <h3 className="font-semibold mb-2 text-sm sm:text-base">Email</h3>
-                  <p className="text-primary-100 text-xs sm:text-sm break-all">hyperlinkbtp@gmail.com</p>
+                  <p className="text-primary-100 text-xs sm:text-sm break-all">hydrolinkbtp@gmail.com</p>
                 </div>
                 <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-white/20 hover:bg-white/20 transition-all duration-300 sm:col-span-2 md:col-span-1">
                   <Target className="h-7 w-7 sm:h-8 sm:w-8 mx-auto mb-2 sm:mb-3 text-accent-300" />

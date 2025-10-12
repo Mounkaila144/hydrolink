@@ -19,7 +19,7 @@ export default function PolitiqueConfidentialitePage() {
                   Introduction
                 </h2>
                 <p>
-                  hyperlink-BTP respecte votre vie privée et s'engage à protéger vos données personnelles. Cette politique de confidentialité vous informe sur la manière dont nous collectons, utilisons et protégeons vos informations.
+                  hydrolink-BTP respecte votre vie privée et s'engage à protéger vos données personnelles. Cette politique de confidentialité vous informe sur la manière dont nous collectons, utilisons et protégeons vos informations.
                 </p>
               </section>
 
@@ -59,7 +59,7 @@ export default function PolitiqueConfidentialitePage() {
                   Partage des données
                 </h2>
                 <p>
-                  hyperlink-BTP s'engage à ne pas vendre, louer ou partager vos données personnelles avec des tiers, sauf :
+                  hydrolink-BTP s'engage à ne pas vendre, louer ou partager vos données personnelles avec des tiers, sauf :
                 </p>
                 <ul className="list-disc pl-6 mt-4 space-y-2">
                   <li>Avec votre consentement explicite</li>
@@ -119,10 +119,10 @@ export default function PolitiqueConfidentialitePage() {
                   Pour exercer vos droits ou pour toute question concernant cette politique de confidentialité, contactez-nous :
                 </p>
                 <p className="mt-4">
-                  hyperlink-BTP<br />
+                  hydrolink-BTP<br />
                   Niamey, Niger<br />
                   Téléphone : +227 91 27 09 51<br />
-                  Email : hyperlinkbtp@gmail.com
+                  Email : hydrolinkbtp@gmail.com
                 </p>
               </section>
 

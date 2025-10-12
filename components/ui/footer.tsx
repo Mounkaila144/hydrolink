@@ -15,7 +15,7 @@ export function Footer() {
               <div className="h-8 w-8 rounded bg-primary-600 flex items-center justify-center">
                 <span className="text-white font-bold text-sm">HL</span>
               </div>
-              <span className="font-bold text-xl">hyperlink-BTP</span>
+              <span className="font-bold text-xl">hydrolink-BTP</span>
             </div>
             <p className="text-neutral-300 text-sm">
               {t("footer.address")}
@@ -31,7 +31,7 @@ export function Footer() {
               </div>
               <div className="flex items-center space-x-2 text-sm">
                 <Mail className="h-4 w-4" />
-                <span>hyperlinkbtp@gmail.com</span>
+                <span>hydrolinkbtp@gmail.com</span>
               </div>
             </div>
           </div>
@@ -110,7 +110,7 @@ export function Footer() {
         <div className="border-t border-neutral-800 mt-8 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-sm text-neutral-400">
-              © 2024 hyperlink-BTP. Tous droits réservés.
+              © 2024 hydrolink-BTP. Tous droits réservés.
             </div>
             <div className="flex space-x-6 text-sm">
               <Link href="/mentions-legales" className="text-neutral-400 hover:text-white transition-colors">

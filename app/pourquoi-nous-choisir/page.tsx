@@ -26,7 +26,7 @@ export default function PourquoiNousChoisirPage() {
                 {t("why_us.title")}
               </h1>
               <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-                Découvrez ce qui fait de hyperlink-BTP le partenaire idéal pour vos projets.
+                Découvrez ce qui fait de hydrolink-BTP le partenaire idéal pour vos projets.
               </p>
             </div>
           </div>

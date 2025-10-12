@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-hyperlink-BTP is a professional website for a multidisciplinary company based in Niamey, Niger, specializing in civil engineering & construction (BTP), hydraulics, e-commerce, and general commerce. The site is built with Next.js 15 (App Router), TypeScript, and uses next-intl for internationalization.
+hydrolink-BTP is a professional website for a multidisciplinary company based in Niamey, Niger, specializing in civil engineering & construction (BTP), hydraulics, e-commerce, and general commerce. The site is built with Next.js 15 (App Router), TypeScript, and uses next-intl for internationalization.
 
 ## Development Commands
 
@@ -102,7 +102,7 @@ The site uses **next-intl** for internationalization:
 - Comprehensive metadata including Open Graph and Twitter Cards
 - Multi-language support with `alternates.languages`
 - Sitemap and robots configuration
-- Base URL: `https://hyperlink-btp.com`
+- Base URL: `https://hydrolink-btp.com`
 
 ## Key Technical Details
 

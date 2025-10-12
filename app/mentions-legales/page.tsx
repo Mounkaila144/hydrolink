@@ -19,11 +19,11 @@ export default function MentionsLegalesPage() {
                   Informations légales
                 </h2>
                 <p>
-                  <strong>hyperlink-BTP</strong><br />
+                  <strong>hydrolink-BTP</strong><br />
                   Entreprise individuelle<br />
                   Siège social : Niamey, Niger<br />
                   Téléphone : +227 91 27 09 51 / +227 88 59 59 20<br />
-                  Email : hyperlinkbtp@gmail.com
+                  Email : hydrolinkbtp@gmail.com
                 </p>
               </section>
 
@@ -32,7 +32,7 @@ export default function MentionsLegalesPage() {
                   Directeur de la publication
                 </h2>
                 <p>
-                  Le directeur de la publication du site web est le représentant légal de hyperlink-BTP.
+                  Le directeur de la publication du site web est le représentant légal de hydrolink-BTP.
                 </p>
               </section>
 
@@ -54,10 +54,10 @@ export default function MentionsLegalesPage() {
                   Propriété intellectuelle
                 </h2>
                 <p>
-                  L'ensemble du contenu de ce site web (textes, images, graphismes, logos, icônes, sons, logiciels) est la propriété exclusive de hyperlink-BTP ou de ses partenaires, sauf mention contraire explicite.
+                  L'ensemble du contenu de ce site web (textes, images, graphismes, logos, icônes, sons, logiciels) est la propriété exclusive de hydrolink-BTP ou de ses partenaires, sauf mention contraire explicite.
                 </p>
                 <p>
-                  Toute reproduction, distribution, modification ou utilisation de ces éléments, même partielle, sans autorisation préalable écrite de hyperlink-BTP est strictement interdite.
+                  Toute reproduction, distribution, modification ou utilisation de ces éléments, même partielle, sans autorisation préalable écrite de hydrolink-BTP est strictement interdite.
                 </p>
               </section>
 
@@ -66,10 +66,10 @@ export default function MentionsLegalesPage() {
                   Données personnelles
                 </h2>
                 <p>
-                  Les informations collectées via les formulaires de contact sont destinées exclusivement à hyperlink-BTP pour le traitement de vos demandes. Conformément à la réglementation en vigueur, vous disposez d'un droit d'accès, de rectification et de suppression de vos données personnelles.
+                  Les informations collectées via les formulaires de contact sont destinées exclusivement à hydrolink-BTP pour le traitement de vos demandes. Conformément à la réglementation en vigueur, vous disposez d'un droit d'accès, de rectification et de suppression de vos données personnelles.
                 </p>
                 <p>
-                  Pour exercer ces droits, contactez-nous à : hyperlinkbtp@gmail.com
+                  Pour exercer ces droits, contactez-nous à : hydrolinkbtp@gmail.com
                 </p>
               </section>
 
@@ -87,10 +87,10 @@ export default function MentionsLegalesPage() {
                   Limitation de responsabilité
                 </h2>
                 <p>
-                  hyperlink-BTP s'efforce d'assurer l'exactitude et la mise à jour des informations diffusées sur ce site. Cependant, nous ne pouvons garantir l'absence totale d'erreurs ou d'omissions.
+                  hydrolink-BTP s'efforce d'assurer l'exactitude et la mise à jour des informations diffusées sur ce site. Cependant, nous ne pouvons garantir l'absence totale d'erreurs ou d'omissions.
                 </p>
                 <p>
-                  hyperlink-BTP décline toute responsabilité quant à l'utilisation qui pourrait être faite de ces informations et des conséquences qui pourraient en découler.
+                  hydrolink-BTP décline toute responsabilité quant à l'utilisation qui pourrait être faite de ces informations et des conséquences qui pourraient en découler.
                 </p>
               </section>
 
@@ -111,10 +111,10 @@ export default function MentionsLegalesPage() {
                   Pour toute question concernant ces mentions légales, contactez-nous :
                 </p>
                 <p>
-                  hyperlink-BTP<br />
+                  hydrolink-BTP<br />
                   Niamey, Niger<br />
                   Téléphone : +227 91 27 09 51<br />
-                  Email : hyperlinkbtp@gmail.com
+                  Email : hydrolinkbtp@gmail.com
                 </p>
               </section>
             </div>

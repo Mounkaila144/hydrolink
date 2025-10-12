@@ -17,20 +17,20 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "hyperlink-BTP - Solutions durables en BTP, hydraulique et commerce",
-    template: "%s | hyperlink-BTP"
+    default: "hydrolink-BTP - Solutions durables en BTP, hydraulique et commerce",
+    template: "%s | hydrolink-BTP"
   },
   description: "Entreprise multidisciplinaire basée à Niamey, Niger. Spécialisée en génie civil & BTP, hydraulique, e-commerce et commerce général. Solutions durables pour le développement du Niger.",
   keywords: ["BTP Niger", "Génie civil Niamey", "Forage puits Niger", "AEP Niger", "E-commerce Niger", "Entreprise travaux publics Niger"],
-  authors: [{ name: "hyperlink-BTP" }],
-  creator: "hyperlink-BTP",
-  publisher: "hyperlink-BTP",
+  authors: [{ name: "hydrolink-BTP" }],
+  creator: "hydrolink-BTP",
+  publisher: "hydrolink-BTP",
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://hyperlink-btp.com"),
+  metadataBase: new URL("https://hydrolink-btp.com"),
   alternates: {
     canonical: "/",
     languages: {
@@ -41,16 +41,16 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "fr_NE",
-    url: "https://hyperlink-btp.com",
-    title: "hyperlink-BTP - Solutions durables en BTP, hydraulique et commerce",
+    url: "https://hydrolink-btp.com",
+    title: "hydrolink-BTP - Solutions durables en BTP, hydraulique et commerce",
     description: "Entreprise multidisciplinaire basée à Niamey, Niger. Spécialisée en génie civil & BTP, hydraulique, e-commerce et commerce général.",
-    siteName: "hyperlink-BTP",
+    siteName: "hydrolink-BTP",
   },
   twitter: {
     card: "summary_large_image",
-    title: "hyperlink-BTP - Solutions durables",
+    title: "hydrolink-BTP - Solutions durables",
     description: "Entreprise multidisciplinaire basée à Niamey, Niger",
-    creator: "@hyperlinkbtp",
+    creator: "@hydrolinkbtp",
   },
   robots: {
     index: true,

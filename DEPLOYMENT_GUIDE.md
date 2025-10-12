@@ -5,7 +5,7 @@ Ce guide détaille les étapes pour déployer l'application e-commerce sur le se
 ### Installation et Configuration
 ```bash
 # Aller dans le répertoire backend
-cd /var/www/hyperlink/hyperlinkbacken
+cd /var/www/hydrolink/hydrolinkbacken
 
 # Installer les dépendances Composer (production)
 composer install
@@ -21,12 +21,12 @@ APP_NAME="Commandes Sans Frontière"
 APP_ENV=production
 APP_KEY=base64:VOTRE_CLE_GENEREE
 APP_DEBUG=false
-APP_URL=https://hyperlink.ptrniger.com
+APP_URL=https://hydrolink.ptrniger.com
 
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=hyperlink_db
+DB_DATABASE=hydrolink_db
 DB_USERNAME=root
 DB_PASSWORD=mounkaila144
 
@@ -44,27 +44,26 @@ SESSION_DRIVER=file
 ### Commandes de Déploiement Laravel
 ```bash
 # Générer la clé d'application
-/usr/bin/php8.2 artisan key:generate
+php artisan key:generate
 
 # Exécuter les migrations
-/usr/bin/php8.2 artisan migrate --force
+php artisan migrate --force
 
 # Optimisations pour la production
-/usr/bin/php8.2 artisan config:cache
-/usr/bin/php8.2 artisan route:cache
-/usr/bin/php8.2 artisan view:cache
-/usr/bin/php8.2 artisan event:cache
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+php artisan event:cache
 
 # Appliquer les modifications CORS
-/usr/bin/php8.2 artisan config:clear
-/usr/bin/php8.2 artisan config:cache
+php artisan config:clear
+php artisan config:cache
 
 # Créer le lien symbolique pour le storage
-/usr/bin/php8.2 artisan storage:link
+php artisan storage:link
 
 # Installer les dépendances Node.js et construire les assets
-npm install
-npm run build
+
 ```
 
 ## 2. Préparation du Frontend Next.js
@@ -72,7 +71,7 @@ npm run build
 ### Configuration des Variables d'Environnement
 ```bash
 # Aller dans le répertoire frontend
-cd /var/www/hyperlink
+cd /var/www/hydrolink
 
 # Copier et configurer l'environnement
 cp .env.local.example .env.local
@@ -82,8 +81,8 @@ nano .env.local
 ### Configuration .env.local pour la Production
 ```env
 # Backend API URLs
-NEXT_PUBLIC_BACKEND_URL=https://hyperlink.ptrniger.com
-NEXT_PUBLIC_API_BASE_URL=https://hyperlink.ptrniger.com/api
+NEXT_PUBLIC_BACKEND_URL=https://hydrolink.ptrniger.com
+NEXT_PUBLIC_API_BASE_URL=https://hydrolink.ptrniger.com/api
 
 # Environnement
 NODE_ENV=production
@@ -101,7 +100,7 @@ npm run build
 npm install -g pm2
 
 # Démarrer l'application Next.js avec PM2
-pm2 start npm --name "commande-frontend" -- start
+pm2 start npm --name "hydrolink" -- start
 
 # Sauvegarder la configuration PM2
 pm2 save
@@ -113,124 +112,55 @@ pm2 startup
 ## 3. Configuration Apache
 
 ### Créer le fichier VirtualHost
-Créer le fichier `/etc/apache2/sites-available/hyperlink.ptrniger.com.conf` :
+Créer le fichier `/etc/apache2/sites-available/hydrolink.ptrniger.com.conf` :
 
 ```apache
-<VirtualHost *:443>
-    ServerName hyperlink.ptrniger.com
-    DocumentRoot /var/www/hyperlink/hyperlinkbacken/public
+ <VirtualHost *:443>
+      ServerName hydrolink.ptrniger.com
+      DocumentRoot /var/www/html
 
-    # Configuration SSL
-    SSLEngine on
-    SSLCertificateFile /etc/letsencrypt/live/hyperlink.ptrniger.com/fullchain.pem
-    SSLCertificateKeyFile /etc/letsencrypt/live/hyperlink.ptrniger.com/privkey.pem
-    Include /etc/letsencrypt/options-ssl-apache.conf
+      # SSL Configuration
+      SSLEngine on
+      SSLCertificateFile /etc/letsencrypt/live/hydrolink.ptrniger.com/fullchain.pem
+      SSLCertificateKeyFile /etc/letsencrypt/live/hydrolink.ptrniger.com/privkey.pem
+      Include /etc/letsencrypt/options-ssl-apache.conf
 
-    # Configuration PHP 8.2
-    <FilesMatch \.php$>
-        SetHandler "proxy:unix:/var/run/php/php8.2-fpm.sock|fcgi://localhost"
-    </FilesMatch>
+      # Enable RewriteEngine
+      RewriteEngine On
 
-    # Configuration du répertoire Laravel
-    <Directory /var/www/hyperlink/hyperlinkbacken/public>
-        Options -Indexes +FollowSymLinks
-        AllowOverride All
-        Require all granted
+      # Handle API requests - rewrite to Laravel backend
+      RewriteCond %{REQUEST_URI} ^/api/(.*)$
+      RewriteRule ^/api/(.*)$ /var/www/hydrolink/hydrolinkbacken/public/index.php [L]
 
-        # Configuration pour Laravel
-        RewriteEngine On
+      # Handle storage files - serve from Laravel
+      RewriteCond %{REQUEST_URI} ^/storage/(.*)$
+      RewriteRule ^/storage/(.*)$ /var/www/hydrolink/hydrolinkbacken/storage/app/public/$1 [L]
 
-        # Proxy pour l'API vers le backend Laravel
-        RewriteCond %{REQUEST_URI} ^/api/
-        RewriteCond %{REQUEST_FILENAME} !-d
-        RewriteCond %{REQUEST_FILENAME} !-f
-        RewriteRule ^(.*)$ index.php [QSA,L]
+      # Everything else - proxy to Next.js
+      RewriteCond %{REQUEST_URI} !^/api/
+      RewriteCond %{REQUEST_URI} !^/storage/
+      RewriteRule ^/(.*)$ http://localhost:3030/$1 [P,L]
 
-        # Proxy pour le frontend Next.js (toutes les autres requêtes)
-        RewriteCond %{REQUEST_URI} !^/api/
-        RewriteCond %{REQUEST_URI} !^/storage/
-        RewriteCond %{REQUEST_FILENAME} !-d
-        RewriteCond %{REQUEST_FILENAME} !-f
-        RewriteRule ^(.*)$ http://localhost:3000/$1 [P,L]
-    </Directory>
+      # Enable proxy modules
+      ProxyRequests Off
+      ProxyPreserveHost On
 
-    # Sécurité - Bloquer l'accès aux fichiers sensibles
-    <Directory /var/www/hyperlink/hyperlinkbacken>
-        <Files ".env">
-            Require all denied
-        </Files>
-        <Files "composer.json">
-            Require all denied
-        </Files>
-        <Files "composer.lock">
-            Require all denied
-        </Files>
-        <Files "artisan">
-            Require all denied
-        </Files>
-    </Directory>
+      # Laravel backend directory configuration
+      <Directory /var/www/hydrolink/hydrolinkbacken/public>
+          Options -Indexes +FollowSymLinks
+          AllowOverride All
+          Require all granted
+          DirectoryIndex index.php
+      </Directory>
 
-    # Bloquer l'accès aux dossiers Laravel sensibles
-    <DirectoryMatch "^/var/www/hyperlink/hyperlinkbacken/(app|bootstrap|config|database|resources|routes|tests|vendor)">
-        Require all denied
-    </DirectoryMatch>
-
-    # Headers de sécurité
-    Header always set X-Content-Type-Options nosniff
-    Header always set X-Frame-Options DENY
-    Header always set X-XSS-Protection "1; mode=block"
-    Header always set Referrer-Policy "strict-origin-when-cross-origin"
-    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
-
-    # Compression
-    <IfModule mod_deflate.c>
-        AddOutputFilterByType DEFLATE text/plain
-        AddOutputFilterByType DEFLATE text/html
-        AddOutputFilterByType DEFLATE text/xml
-        AddOutputFilterByType DEFLATE text/css
-        AddOutputFilterByType DEFLATE application/xml
-        AddOutputFilterByType DEFLATE application/xhtml+xml
-        AddOutputFilterByType DEFLATE application/rss+xml
-        AddOutputFilterByType DEFLATE application/javascript
-        AddOutputFilterByType DEFLATE application/x-javascript
-        AddOutputFilterByType DEFLATE application/json
-    </IfModule>
-
-    # Cache pour les assets statiques
-    <IfModule mod_expires.c>
-        ExpiresActive On
-        ExpiresByType text/css "access plus 1 year"
-        ExpiresByType application/javascript "access plus 1 year"
-        ExpiresByType image/png "access plus 1 year"
-        ExpiresByType image/jpg "access plus 1 year"
-        ExpiresByType image/jpeg "access plus 1 year"
-        ExpiresByType image/gif "access plus 1 year"
-        ExpiresByType image/svg+xml "access plus 1 year"
-        ExpiresByType image/webp "access plus 1 year"
-        ExpiresByType font/woff "access plus 1 year"
-        ExpiresByType font/woff2 "access plus 1 year"
-    </IfModule>
-
-    # Logs spécifiques
-    LogLevel info
-    ErrorLog   ${APACHE_LOG_DIR}/hyperlink.ptrniger-error.log
-    CustomLog  ${APACHE_LOG_DIR}/hyperlink.ptrniger-access.log combined
-</VirtualHost>
-
-# Redirection HTTP vers HTTPS
-<VirtualHost *:80>
-    ServerName hyperlink.ptrniger.com
-    DocumentRoot /var/www/hyperlink/hyperlinkbacken/public
-
-    # Redirection permanente vers HTTPS
-    RewriteEngine On
-    RewriteCond %{HTTPS} off
-    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
-
-    # Logs pour le HTTP aussi
-    ErrorLog   ${APACHE_LOG_DIR}/hyperlink.ptrniger-http-error.log
-    CustomLog  ${APACHE_LOG_DIR}/hyperlink.ptrniger-http-access.log combined
-</VirtualHost>
+      # Storage directory configuration
+      Alias /storage /var/www/hydrolink/hydrolinkbacken/storage/app/public
+      <Directory /var/www/hydrolink/hydrolinkbacken/storage/app/public>
+          Options -Indexes +FollowSymLinks
+          AllowOverride None
+          Require all granted
+      </Directory>
+  </VirtualHost>
 ```
 
 ### Activation du Site
@@ -245,7 +175,7 @@ a2enmod deflate
 a2enmod expires
 
 # Activer le site
-a2ensite hyperlink.ptrniger.com.conf
+a2ensite hydrolink.ptrniger.com.conf
 
 # Tester la configuration Apache
 apache2ctl configtest
@@ -258,24 +188,24 @@ systemctl reload apache2
 
 ```bash
 # Configurer les permissions pour Laravel
-sudo chown -R www-data:www-data /var/www/hyperlink/hyperlinkbacken
-sudo chmod -R 755 /var/www/hyperlink/hyperlinkbacken
-sudo chmod -R 775 /var/www/hyperlink/hyperlinkbacken/storage
-sudo chmod -R 775 /var/www/hyperlink/hyperlinkbacken/bootstrap/cache
+sudo chown -R www-data:www-data /var/www/hydrolink/hydrolinkbacken
+sudo chmod -R 755 /var/www/hydrolink/hydrolinkbacken
+sudo chmod -R 775 /var/www/hydrolink/hydrolinkbacken/storage
+sudo chmod -R 775 /var/www/hydrolink/hydrolinkbacken/bootstrap/cache
 
 # Sécuriser le fichier .env
-sudo chmod 600 /var/www/hyperlink/hyperlinkbacken/.env
+sudo chmod 600 /var/www/hydrolink/hydrolinkbacken/.env
 
 # Configurer les permissions pour Next.js
-sudo chown -R www-data:www-data /var/www/hyperlink
-sudo chmod -R 755 /var/www/hyperlink
+sudo chown -R www-data:www-data /var/www/hydrolink
+sudo chmod -R 755 /var/www/hydrolink
 ```
 
 ## 5. Configuration SSL avec Let's Encrypt
 
 ```bash
 # Obtenir le certificat SSL pour le domaine
-sudo certbot --apache -d hyperlink.ptrniger.com
+sudo certbot --apache -d hydrolink.ptrniger.com
 ```
 
 ## 7. Vérifications Post-Déploiement
@@ -286,57 +216,57 @@ sudo certbot --apache -d hyperlink.ptrniger.com
 pm2 status
 
 # Vérifier les logs
-sudo tail -f /var/log/apache2/hyperlink.ptrniger-error.log
-pm2 logs commande-frontend --lines 20
+sudo tail -f /var/log/apache2/hydrolink.ptrniger-error.log
+pm2 logs hydrolink --lines 20
 ```
 
 ### Vérifier les Variables d'Environnement
 ```bash
 # Vérifier que les variables sont correctes
-cd /var/www/hyperlink
+cd /var/www/hydrolink
 cat .env.local
 
 # Les URLs doivent pointer vers le domaine de production :
-# NEXT_PUBLIC_BACKEND_URL=https://hyperlink.ptrniger.com
-# NEXT_PUBLIC_API_BASE_URL=https://hyperlink.ptrniger.com/api
+# NEXT_PUBLIC_BACKEND_URL=https://hydrolink.ptrniger.com
+# NEXT_PUBLIC_API_BASE_URL=https://hydrolink.ptrniger.com/api
 ```
 
 ### Tests Fonctionnels
-1. **Frontend** : Accéder à `https://hyperlink.ptrniger.com`
-2. **API Backend** : Tester `https://hyperlink.ptrniger.com/api/health`
-3. **Storage** : Vérifier l'accès aux images `https://hyperlink.ptrniger.com/storage/`
+1. **Frontend** : Accéder à `https://hydrolink.ptrniger.com`
+2. **API Backend** : Tester `https://hydrolink.ptrniger.com/api/health`
+3. **Storage** : Vérifier l'accès aux images `https://hydrolink.ptrniger.com/storage/`
 
 ## 8. Maintenance et Mises à Jour
 
 ### Commandes de Maintenance Laravel
 ```bash
 # Nettoyer les caches
-/usr/bin/php8.2 artisan cache:clear
-/usr/bin/php8.2 artisan config:clear
-/usr/bin/php8.2 artisan route:clear
-/usr/bin/php8.2 artisan view:clear
+php artisan cache:clear
+php artisan config:clear
+php artisan route:clear
+php artisan view:clear
 
 # Reconstruire les caches
-/usr/bin/php8.2 artisan config:cache
-/usr/bin/php8.2 artisan route:cache
-/usr/bin/php8.2 artisan view:cache
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
 
 # Migrations
-/usr/bin/php8.2 artisan migrate --force
+php artisan migrate --force
 ```
 
 ### Commandes de Maintenance Next.js
 ```bash
 # Redéployer le frontend
-cd /var/www/hyperlink
+cd /var/www/hydrolink
 npm run build
-pm2 restart commande-frontend
+pm2 restart hydrolink
 
 # Vérifier les logs PM2
-pm2 logs commande-frontend
+pm2 logs hydrolink
 
 # Redémarrer PM2 si nécessaire
-pm2 restart commande-frontend
+pm2 restart hydrolink
 pm2 status
 ```
 
@@ -349,7 +279,7 @@ pm2 status
 
 DATE=$(date +%Y%m%d_%H%M%S)
 BACKUP_DIR="/var/backups/commande"
-PROJECT_DIR="/var/www/hyperlink"
+PROJECT_DIR="/var/www/hydrolink"
 
 # Créer le répertoire de sauvegarde
 mkdir -p $BACKUP_DIR
@@ -377,16 +307,16 @@ sudo crontab -e
 ## 10. Surveillance et Logs
 
 ### Fichiers de Logs Importants
-- Apache : `/var/log/apache2/hyperlink.ptrniger-error.log`
-- Laravel : `/var/www/hyperlink/hyperlinkbacken/storage/logs/laravel.log`
-- PM2 : `pm2 logs commande-frontend`
+- Apache : `/var/log/apache2/hydrolink.ptrniger-error.log`
+- Laravel : `/var/www/hydrolink/hydrolinkbacken/storage/logs/laravel.log`
+- PM2 : `pm2 logs hydrolink`
 
 ### Commandes de Surveillance
 ```bash
 # Surveiller les logs en temps réel
-sudo tail -f /var/log/apache2/hyperlink.ptrniger-error.log
-sudo tail -f /var/www/hyperlink/hyperlinkbacken/storage/logs/laravel.log
-pm2 logs commande-frontend --lines 50
+sudo tail -f /var/log/apache2/hydrolink.ptrniger-error.log
+sudo tail -f /var/www/hydrolink/hydrolinkbacken/storage/logs/laravel.log
+pm2 logs hydrolink --lines 50
 
 # Vérifier l'espace disque
 df -h
