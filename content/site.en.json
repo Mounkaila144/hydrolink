@@ -1,9 +1,9 @@
 {
   "brand": {
-    "name": "HYDROLINK-BTP",
+    "name": "hyperlink-BTP",
     "location": "Niamey, Niger",
     "phones": ["+227 91 27 09 51", "+227 88 59 59 20"],
-    "email": "hydrolinkbtp@gmail.com"
+    "email": "hyperlinkbtp@gmail.com"
   },
   "nav": [
     {"label": "Home", "href": "/"},
@@ -142,7 +142,7 @@
     }
   },
   "footer": {
-    "company": "HYDROLINK-BTP",
+    "company": "hyperlink-BTP",
     "address": "Niamey, Niger",
     "legal": {
       "mentions": "Legal notices",
@@ -166,7 +166,7 @@
     },
     "register": {
       "title": "Create Account",
-      "subtitle": "Join HYDROLINK-BTP today",
+      "subtitle": "Join hyperlink-BTP today",
       "name": "Full name",
       "namePlaceholder": "Your full name",
       "email": "Email address",

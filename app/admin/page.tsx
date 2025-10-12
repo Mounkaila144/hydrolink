@@ -84,7 +84,7 @@ function AdminDashboard() {
         <div>
           <h1 className="text-2xl font-bold text-foreground">Tableau de bord</h1>
           <p className="mt-1 text-sm text-muted-foreground">
-            Vue d'ensemble de votre plateforme HYDROLINK
+            Vue d'ensemble de votre plateforme hyperlink
           </p>
         </div>
 

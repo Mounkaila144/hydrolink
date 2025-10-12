@@ -58,11 +58,11 @@ export function Header() {
                 <span className="font-medium">+227 91 27 09 51</span>
               </a>
               <a
-                href="mailto:hydrolinkbtp@gmail.com"
+                href="mailto:hyperlinkbtp@gmail.com"
                 className="flex items-center space-x-2 text-muted-foreground hover:text-primary-600 transition-colors"
               >
                 <Mail className="h-3.5 w-3.5" />
-                <span className="font-medium">hydrolinkbtp@gmail.com</span>
+                <span className="font-medium">hyperlinkbtp@gmail.com</span>
               </a>
             </div>
             <div className="flex items-center space-x-4 text-xs text-muted-foreground">
@@ -83,7 +83,7 @@ export function Header() {
             <div className="relative h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 rounded-xl overflow-hidden shadow-md group-hover:shadow-lg transition-all duration-300 ring-2 ring-primary-100 group-hover:ring-primary-300 flex-shrink-0">
               <Image
                 src="/logo.jpeg"
-                alt="HYDROLINK-BTP Logo"
+                alt="hyperlink-BTP Logo"
                 fill
                 className="object-cover"
                 priority
@@ -91,7 +91,7 @@ export function Header() {
             </div>
             <div className="flex flex-col min-w-0">
               <span className="font-bold text-sm sm:text-base md:text-lg lg:text-xl text-foreground group-hover:text-primary-600 transition-colors leading-tight">
-                HYDROLINK-BTP
+                hyperlink-BTP
               </span>
               <span className="text-[10px] sm:text-xs text-muted-foreground leading-tight line-clamp-1">
                 Solutions durables
@@ -319,11 +319,11 @@ export function Header() {
                   <span>+227 91 27 09 51</span>
                 </a>
                 <a
-                  href="mailto:hydrolinkbtp@gmail.com"
+                  href="mailto:hyperlinkbtp@gmail.com"
                   className="flex items-center space-x-3 px-4 py-3 text-sm font-medium text-foreground hover:bg-primary-50 rounded-lg transition-colors"
                 >
                   <Mail className="h-4 w-4 text-primary-600" />
-                  <span className="text-xs">hydrolinkbtp@gmail.com</span>
+                  <span className="text-xs">hyperlinkbtp@gmail.com</span>
                 </a>
                 <div className="px-4 pt-2">
                   <Button asChild className="w-full btn-primary shadow-md">

@@ -39,9 +39,9 @@ export default function EcommercePage() {
                   </Link>
                 </Button>
                 <Button size="lg" variant="outline" className="btn-secondary">
-                  <Link href="mailto:hydrolinkbtp@gmail.com">
+                  <Link href="mailto:hyperlinkbtp@gmail.com">
                     <Mail className="h-4 w-4 mr-2" />
-                    hydrolinkbtp@gmail.com
+                    hyperlinkbtp@gmail.com
                   </Link>
                 </Button>
               </div>
