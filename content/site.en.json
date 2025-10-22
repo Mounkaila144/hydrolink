@@ -50,9 +50,10 @@
       "description": "Improving access to drinking water in rural areas.",
       "services": [
         "Deep boreholes",
-        "Traditional/modern wells",
+        "Modern wells (OFEDES types), market garden wells",
         "AEP systems",
-        "Mini water supply systems"
+        "Mini water supply systems",
+        "Geological, hydrogeological and climatic studies of Niger"
       ]
     },
     "ecommerce": {
@@ -76,15 +77,54 @@
   },
   "values": ["Excellence", "Innovation", "Sustainable Development"],
   "objectifs": [
-    "Operational excellence",
-    "Water access",
-    "Innovative commerce",
-    "Social impact"
+    {
+      "title": "Operational excellence",
+      "details": [
+        "Compliance with international standards and norms",
+        "Rigorous project and deadline management",
+        "Continuous improvement of our processes"
+      ]
+    },
+    {
+      "title": "Water access",
+      "details": [
+        "Development of sustainable hydraulic infrastructure",
+        "Improving access to drinking water in rural and urban areas",
+        "Solutions adapted to local needs"
+      ]
+    },
+    {
+      "title": "Innovative commerce",
+      "details": [
+        "Promotion of e-commerce in Niger",
+        "Facilitation of commercial exchanges",
+        "Valorization of local resources internationally"
+      ]
+    },
+    {
+      "title": "Social impact",
+      "details": [
+        "Creation of sustainable local jobs",
+        "Training and skills development",
+        "Contribution to Niger's economic development"
+      ]
+    },
+    {
+      "title": "Quality assurance",
+      "details": [
+        "Physico-chemical and bacteriological water analysis",
+        "Disinfection of hydraulic structures"
+      ]
+    }
   ],
   "about": {
     "title": "Who we are",
     "description": "Dynamic company based in Niamey, specialized in construction, civil engineering, hydraulics, e-commerce and general commerce. We offer sustainable and quality solutions adapted to the Nigerien context.",
-    "mission": "Our mission: improve access to drinking water in rural areas."
+    "mission": [
+      "Improve access to drinking water and sanitation in rural, semi-urban and urban areas",
+      "Execute high-quality infrastructure projects (buildings, roads, public works...)",
+      "Promote e-commerce and general trade"
+    ]
   },
   "impact": {
     "title": "Social & Economic Impact",

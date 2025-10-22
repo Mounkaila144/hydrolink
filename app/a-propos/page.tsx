@@ -42,10 +42,16 @@ export default function AboutPage() {
                   <h2 className="text-3xl font-bold text-foreground mb-6">
                     Notre mission
                   </h2>
-                  <p className="text-lg text-muted-foreground mb-8">
-                    {t("about.mission")}
-                  </p>
-                  <div className="space-y-4">
+                  <div className="space-y-4 mb-8">
+                    {siteData.about.mission.map((point: string, index: number) => (
+                      <div key={index} className="flex items-start space-x-3">
+                        <CheckCircle className="h-6 w-6 text-accent-600 flex-shrink-0 mt-0.5" />
+                        <span className="text-lg text-muted-foreground">{point}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="space-y-4 pt-4 border-t border-neutral-200">
+                    <h3 className="text-xl font-semibold text-foreground mb-4">Nos valeurs</h3>
                     {siteData.values.map((value: string, index: number) => (
                       <div key={index} className="flex items-center space-x-3">
                         <CheckCircle className="h-5 w-5 text-accent-600" />
@@ -81,12 +87,12 @@ export default function AboutPage() {
                   Nos objectifs
                 </h2>
                 <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                  Quatre piliers fondamentaux guident notre action quotidienne
+                  Cinq piliers fondamentaux guident notre action quotidienne
                 </p>
               </div>
 
               <div className="grid md:grid-cols-2 gap-8">
-                {siteData.objectifs.map((objectif: string, index: number) => (
+                {siteData.objectifs.map((objectif: { title: string; details: string[] }, index: number) => (
                   <Card key={index} className="card-hover">
                     <CardHeader>
                       <div className="h-12 w-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
@@ -94,12 +100,17 @@ export default function AboutPage() {
                           {(index + 1).toString()}
                         </span>
                       </div>
-                      <CardTitle className="text-xl">{objectif}</CardTitle>
+                      <CardTitle className="text-xl">{objectif.title}</CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-muted-foreground">
-                        Engagement total pour atteindre l'excellence dans tous nos domaines d'intervention.
-                      </p>
+                      <ul className="space-y-2">
+                        {objectif.details.map((detail: string, detailIndex: number) => (
+                          <li key={detailIndex} className="flex items-start text-muted-foreground">
+                            <CheckCircle className="h-5 w-5 text-accent-600 mr-2 flex-shrink-0 mt-0.5" />
+                            <span>{detail}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </CardContent>
                   </Card>
                 ))}

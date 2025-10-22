@@ -50,9 +50,10 @@
       "description": "Amélioration de l'accès à l'eau potable en milieu rural.",
       "services": [
         "Forages (profonds)",
-        "Puits (traditionnels/modernes)",
+        "Puits modernes (types OFEDES), puits maraîcher",
         "Systèmes d'AEP",
-        "Mini-adductions"
+        "Mini-adductions",
+        "Études géologiques, hydrogéologiques et climatiques du Niger"
       ]
     },
     "ecommerce": {
@@ -76,15 +77,54 @@
   },
   "values": ["Excellence", "Innovation", "Développement durable"],
   "objectifs": [
-    "Excellence opérationnelle",
-    "Accès à l'eau",
-    "Commerce innovant",
-    "Impact social"
+    {
+      "title": "Excellence opérationnelle",
+      "details": [
+        "Respect des normes et standards internationaux",
+        "Gestion rigoureuse des projets et des délais",
+        "Amélioration continue de nos processus"
+      ]
+    },
+    {
+      "title": "Accès à l'eau",
+      "details": [
+        "Développement d'infrastructures hydrauliques durables",
+        "Amélioration de l'accès à l'eau potable en milieux ruraux et urbains",
+        "Solutions adaptées aux besoins locaux"
+      ]
+    },
+    {
+      "title": "Commerce innovant",
+      "details": [
+        "Promotion du e-commerce au Niger",
+        "Facilitation des échanges commerciaux",
+        "Valorisation des ressources locales à l'international"
+      ]
+    },
+    {
+      "title": "Impact social",
+      "details": [
+        "Création d'emplois locaux durables",
+        "Formation et développement des compétences",
+        "Contribution au développement économique du Niger"
+      ]
+    },
+    {
+      "title": "Assurance qualité",
+      "details": [
+        "Analyse physico-chimiques et bactériologique des eaux",
+        "Désinfection des ouvrages hydrauliques"
+      ]
+    }
   ],
   "about": {
     "title": "Qui sommes-nous",
     "description": "Entreprise dynamique basée à Niamey, spécialisée en BTP, génie civil, hydraulique, e-commerce et commerce général. Nous proposons des solutions durables et de qualité, adaptées au contexte nigérien.",
-    "mission": "Notre mission : améliorer l'accès à l'eau potable en milieux ruraux."
+    "mission": [
+      "Améliorer l'accès à l'eau potable et l'assainissement en milieu rural, semi urbain et urbain",
+      "Exécuter des projets d'infrastructure (bâtiment, route, travaux publics...) de haute qualité",
+      "Promouvoir le e-commerce et le commerce général"
+    ]
   },
   "impact": {
     "title": "Impact social & économique",
