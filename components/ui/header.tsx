@@ -33,6 +33,7 @@ export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
+  const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
   const pathname = usePathname();
   const t = useTranslations();
   const { user, isAuthenticated, logout } = useAuth();
@@ -221,27 +222,35 @@ export function Header() {
                 <div key={item.href || `mobile-nav-item-${index}`}>
                   {item.children ? (
                     <div className="space-y-1">
-                      <div className="px-4 py-3 text-sm font-semibold text-primary-700 bg-primary-50 rounded-lg flex items-center justify-between">
+                      <button
+                        onClick={() => setOpenSubmenu(openSubmenu === item.label ? null : item.label)}
+                        className="w-full px-4 py-3 text-sm font-semibold text-primary-700 bg-primary-50 rounded-lg flex items-center justify-between hover:bg-primary-100 transition-colors"
+                      >
                         {item.label}
-                        <ChevronDown className="h-4 w-4" />
-                      </div>
-                      <div className="pl-4 space-y-1">
-                        {item.children.map((child) => (
-                          <Link
-                            key={child.href}
-                            href={child.href}
-                            className={cn(
-                              "block px-4 py-3 text-sm font-medium rounded-lg transition-all duration-200",
-                              pathname === child.href
-                                ? "bg-primary-100 text-primary-700 shadow-sm"
-                                : "text-muted-foreground hover:bg-primary-50 hover:text-primary-700"
-                            )}
-                            onClick={() => setIsMobileMenuOpen(false)}
-                          >
-                            {child.label}
-                          </Link>
-                        ))}
-                      </div>
+                        <ChevronDown className={cn(
+                          "h-4 w-4 transition-transform duration-200",
+                          openSubmenu === item.label && "rotate-180"
+                        )} />
+                      </button>
+                      {openSubmenu === item.label && (
+                        <div className="pl-4 space-y-1 animate-slide-down">
+                          {item.children.map((child) => (
+                            <Link
+                              key={child.href}
+                              href={child.href}
+                              className={cn(
+                                "block px-4 py-3 text-sm font-medium rounded-lg transition-all duration-200",
+                                pathname === child.href
+                                  ? "bg-primary-100 text-primary-700 shadow-sm"
+                                  : "text-muted-foreground hover:bg-primary-50 hover:text-primary-700"
+                              )}
+                              onClick={() => setIsMobileMenuOpen(false)}
+                            >
+                              {child.label}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
                     </div>
                   ) : (
                     <Link

@@ -109,8 +109,20 @@ export function Footer() {
 
         <div className="border-t border-neutral-800 mt-8 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="text-sm text-neutral-400">
-              © 2024 hydrolink-BTP. Tous droits réservés.
+            <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4 text-sm text-neutral-400">
+              <span>© 2024 hydrolink-BTP. Tous droits réservés.</span>
+              <span className="hidden md:inline">•</span>
+              <span>
+                Développé par{" "}
+                <a
+                  href="https://ptrniger.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary-400 hover:text-primary-300 transition-colors font-medium"
+                >
+                  PTRNIGER
+                </a>
+              </span>
             </div>
             <div className="flex space-x-6 text-sm">
               <Link href="/mentions-legales" className="text-neutral-400 hover:text-white transition-colors">
