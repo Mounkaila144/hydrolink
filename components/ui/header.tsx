@@ -46,7 +46,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur-md shadow-sm supports-[backdrop-filter]:bg-white/90">
-      {/* Top Bar - Hidden on mobile */}
+      {/* Top Bar mkl - Hidden on te mobile mkl */}
       <div className="hidden md:block border-b border-neutral-100 bg-gradient-to-r from-primary-50 to-accent-50">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="flex h-10 items-center justify-between text-sm">

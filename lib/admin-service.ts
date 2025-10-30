@@ -19,8 +19,8 @@ export type ProductData = ProductFormData;
 // Also export the admin-prefixed versions
 export type { AdminProduct, AdminCategory, AdminSubcategory, ProductFormData, CategoryFormData, SubcategoryFormData, PaginationMeta };
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api';
-const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:8000';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://hydrolink-btp.com/api';
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://hydrolink-btp.com';
 
 // Log des variables d'environnement au chargement
 console.log('[admin-service] Environment variables:');

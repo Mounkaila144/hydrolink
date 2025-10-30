@@ -127,19 +127,28 @@ export default function Home() {
 
               <div className="grid md:grid-cols-2 gap-8 sm:gap-12 items-center">
                 <div className="px-2 sm:px-0">
-                  <h3 className="text-xl sm:text-2xl font-semibold text-foreground mb-3 sm:mb-4">
+                  <h3 className="text-xl sm:text-2xl font-semibold text-foreground mb-4 sm:mb-6">
                     Notre mission
                   </h3>
-                  <p className="text-sm sm:text-base text-muted-foreground mb-4 sm:mb-6">
-                    {t("about.mission")}
-                  </p>
-                  <div className="space-y-2 sm:space-y-3">
-                    {siteData.values.map((value: string, index: number) => (
-                      <div key={index} className="flex items-center space-x-2 sm:space-x-3">
-                        <CheckCircle className="h-4 w-4 sm:h-5 sm:w-5 text-accent-600 flex-shrink-0" />
-                        <span className="text-sm sm:text-base text-foreground">{value}</span>
-                      </div>
-                    ))}
+                  <div className="space-y-4 sm:space-y-5">
+                    <div className="flex items-start space-x-3 sm:space-x-4">
+                      <CheckCircle className="h-5 w-5 sm:h-6 sm:w-6 text-accent-600 flex-shrink-0 mt-1"/>
+                      <span className="text-sm sm:text-base text-foreground leading-relaxed">
+                        Améliorer l'accès à l'eau potable et l'assainissement en milieu rural, semi urbain et urbain.
+                      </span>
+                    </div>
+                    <div className="flex items-start space-x-3 sm:space-x-4">
+                      <CheckCircle className="h-5 w-5 sm:h-6 sm:w-6 text-accent-600 flex-shrink-0 mt-1"/>
+                      <span className="text-sm sm:text-base text-foreground leading-relaxed">
+                        Exécuter des projets d'infrastructure (bâtiment, route, travaux publics...) de haute qualité.
+                      </span>
+                    </div>
+                    <div className="flex items-start space-x-3 sm:space-x-4">
+                      <CheckCircle className="h-5 w-5 sm:h-6 sm:w-6 text-accent-600 flex-shrink-0 mt-1"/>
+                      <span className="text-sm sm:text-base text-foreground leading-relaxed">
+                        Promouvoir le e-commerce et le commerce général.
+                      </span>
+                    </div>
                   </div>
                 </div>
                 <div className="bg-gradient-to-br from-primary-50 to-accent-50 p-6 sm:p-8 rounded-lg">

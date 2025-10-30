@@ -1,7 +1,7 @@
 // Service pour récupérer les produits publics (côté client)
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api';
-const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:8000';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://hydrolink-btp.com/api';
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://hydrolink-btp.com';
 
 // Helper pour construire les URLs complètes des images
 export const getFullImageUrl = (imagePath: string): string => {
